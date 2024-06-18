@@ -1,13 +1,13 @@
 import { TUser } from "./user.interface";
 import { UserModel } from "./user.model";
 
-const createUserIntoDB = async (user: TUser) => {
-  const result = await UserModel.create(user);
+const createAdminIntoDB = async (payload: TUser) => {
+  const result = await UserModel.create(payload);
   return result;
 };
 
 export const UserServices = {
-  createUserIntoDB,
+  createAdminIntoDB,
 };
 
 // vieo: 8-8

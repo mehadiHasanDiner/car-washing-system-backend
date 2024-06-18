@@ -1,4 +1,4 @@
-import { Schema, model, connect } from "mongoose";
+import { Schema, model } from "mongoose";
 import { TUser } from "./user.interface";
 import { USER_Role } from "./user.constants";
 
@@ -32,4 +32,3 @@ const userSchema = new Schema<TUser>({
 });
 
 export const UserModel = model<TUser>("User", userSchema);
-

@@ -7,6 +7,14 @@ const app: Application = express();
 app.use(express.json());
 app.use(cors());
 
-app.get("/", );
+// application route
+// app.use("/api/", )
+
+// test route
+const test = (req: Request, res: Response) => {
+  res.send('"Hello world", welcome to car washing system');
+};
+
+app.get("/", test);
 
 export default app;
