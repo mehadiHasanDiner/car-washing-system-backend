@@ -1,15 +1,21 @@
 import express, { NextFunction, Request, Response } from "express";
 import { UserControllers } from "./user.controller";
+import { AnyZodObject } from "zod";
+import { UserValidations } from "./user.validation";
+import validateRequest from "../../middleware/validateRequest";
 
 const router = express.Router();
 
-const validateRequest = () => {
-  return async (req: Request, res: Response, next: NextFunction) => {
-    console.log("first ..... ..");
-  };
-};
+router.post(
+  "/create-admin",
+  validateRequest(UserValidations.createAdminValidations),
+  UserControllers.createAdmin
+);
 
-// will call controller function
-router.post("/create-admin", validateRequest(), UserControllers.createAdmin);
+router.put(
+  "/:userId",
+  validateRequest(UserValidations.updateUserValidations),
+  UserControllers.updateUser
+);
 
 export const UserRoutes = router;

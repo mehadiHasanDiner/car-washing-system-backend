@@ -27,6 +27,3 @@ app.use(globalErrorHandler);
 app.use(notFound);
 
 export default app;
-
-// shades-of-purple-hyper
-// video 12-3

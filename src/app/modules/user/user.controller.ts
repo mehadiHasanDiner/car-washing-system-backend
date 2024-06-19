@@ -14,6 +14,18 @@ const createAdmin = catchAsync(async (req, res, next) => {
   });
 });
 
+const updateUser = catchAsync(async (req, res, next) => {
+  const { userId } = req.params;
+  const result = await UserServices.updateUserIntoDB(userId, req.body);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "User is Updated successfully",
+    data: result,
+  });
+});
+
 export const UserControllers = {
   createAdmin,
+  updateUser,
 };

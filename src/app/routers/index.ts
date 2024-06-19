@@ -4,7 +4,7 @@ const router = Router();
 
 const moduleRoutes = [
   {
-    path: "/create-admin",
+    path: "/users",
     route: UserRoutes,
   },
 ];

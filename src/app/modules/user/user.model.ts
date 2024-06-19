@@ -17,7 +17,7 @@ const userSchema = new Schema<TUser>({
     required: [true, "password is required"],
   },
   phone: {
-    type: Number,
+    type: String,
     required: [true, "Please enter a valid phone number"],
   },
   role: {
