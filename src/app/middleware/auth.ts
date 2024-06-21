@@ -38,11 +38,8 @@ const auth = (...requiredRoles: (keyof typeof USER_ROLE)[]) => {
         "You are not authorized to access this route"
       );
     }
-    req.body = {
-      email,
-      role,
-    };
-    console.log(req.body);
+
+    // console.log(req.body);
 
     next();
   });

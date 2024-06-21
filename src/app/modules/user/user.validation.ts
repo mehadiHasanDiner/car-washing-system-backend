@@ -18,9 +18,7 @@ const createAdminValidations = z.object({
 const updateUserValidations = z.object({
   body: z.object({
     name: z.string().optional(),
-    phone: z.string().optional(),
-    role: z.nativeEnum(USER_ROLE).optional(),
-    address: z.string().optional(),
+    role: z.nativeEnum(USER_ROLE),
   }),
 });
 

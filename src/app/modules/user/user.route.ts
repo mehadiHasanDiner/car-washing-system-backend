@@ -14,7 +14,7 @@ router.post(
   UserControllers.createAdmin
 );
 
-router.put(
+router.patch(
   "/:userId",
   auth(USER_ROLE.admin),
   validateRequest(UserValidations.updateUserValidations),

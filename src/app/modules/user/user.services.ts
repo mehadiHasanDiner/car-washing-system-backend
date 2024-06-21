@@ -7,7 +7,10 @@ const createAdminIntoDB = async (payload: TUser) => {
 };
 
 const updateUserIntoDB = async (_id: string, payload: TUser) => {
-  const result = await UserModel.findByIdAndUpdate({ _id }, payload);
+  console.log(payload);
+  const result = await UserModel.findByIdAndUpdate({ _id }, payload, {
+    new: true,
+  });
   return result;
 };
 
