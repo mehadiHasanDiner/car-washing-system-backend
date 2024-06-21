@@ -1,6 +1,5 @@
 import { Schema, model } from "mongoose";
 import { TUser } from "./user.interface";
-import { USER_Role } from "./user.constants";
 import bcryptjs from "bcryptjs";
 import config from "../../config";
 
@@ -24,8 +23,7 @@ const userSchema = new Schema<TUser>({
   },
   role: {
     type: String,
-    required: [true, "Role is required"],
-    enum: Object.keys(USER_Role),
+    enum: ["admin", "user"],
   },
   address: {
     type: String,

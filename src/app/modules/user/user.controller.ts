@@ -16,6 +16,8 @@ const createAdmin = catchAsync(async (req, res, next) => {
 
 const updateUser = catchAsync(async (req, res, next) => {
   const { userId } = req.params;
+  console.log({ userId });
+
   const result = await UserServices.updateUserIntoDB(userId, req.body);
   sendResponse(res, {
     statusCode: httpStatus.OK,

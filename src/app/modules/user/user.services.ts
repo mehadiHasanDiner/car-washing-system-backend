@@ -6,8 +6,8 @@ const createAdminIntoDB = async (payload: TUser) => {
   return result;
 };
 
-const updateUserIntoDB = async (_id:string, payload: TUser) => {
-  const result = await UserModel.create({ _id }, payload);
+const updateUserIntoDB = async (_id: string, payload: TUser) => {
+  const result = await UserModel.findByIdAndUpdate({ _id }, payload);
   return result;
 };
 
@@ -15,5 +15,3 @@ export const UserServices = {
   createAdminIntoDB,
   updateUserIntoDB,
 };
-
-// vieo: 8-8
