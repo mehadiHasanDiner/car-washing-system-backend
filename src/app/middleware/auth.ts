@@ -40,6 +40,10 @@ const auth = (...requiredRoles: (keyof typeof USER_ROLE)[]) => {
     }
 
     // console.log(req.body);
+    req.user = {
+      email,
+      role,
+    };
 
     next();
   });

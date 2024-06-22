@@ -1,6 +1,7 @@
 import { model, Schema } from "mongoose";
 
 import { TBooking } from "./booking.interface";
+import { vehicleTypes } from "./booking.constant";
 
 const bookingSchema = new Schema(
   {
@@ -20,6 +21,7 @@ const bookingSchema = new Schema(
     },
     vehicleType: {
       type: String,
+      enum: vehicleTypes,
       required: true,
     },
     vehicleBrand: {
