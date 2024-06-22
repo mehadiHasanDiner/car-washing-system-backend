@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 import { TSlot } from "./slot.interface";
+import { isSlotBooked } from "./slot.constant";
 
 const slotSchema = new Schema<TSlot>(
   {
@@ -22,6 +23,7 @@ const slotSchema = new Schema<TSlot>(
     },
     isBooked: {
       type: String,
+      enum: isSlotBooked,
       default: "available",
     },
   },
@@ -30,4 +32,9 @@ const slotSchema = new Schema<TSlot>(
   }
 );
 
-export const Slot = model<TSlot>("Slot", slotSchema);
+slotSchema.pre("find", function (next) {
+  this.find({ isBooked: { $ne: "booked" } });
+  next();
+});
+
+export const SlotModel = model<TSlot>("Slot", slotSchema);
