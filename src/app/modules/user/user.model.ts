@@ -3,33 +3,38 @@ import { TUser } from "./user.interface";
 import bcryptjs from "bcryptjs";
 import config from "../../config";
 
-const userSchema = new Schema<TUser>({
-  name: {
-    type: String,
-    required: [true, "name is required"],
+const userSchema = new Schema<TUser>(
+  {
+    name: {
+      type: String,
+      required: [true, "name is required"],
+    },
+    email: {
+      type: String,
+      required: [true, "email is required"],
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: [true, "password is required"],
+    },
+    phone: {
+      type: String,
+      required: [true, "Please enter a valid phone number"],
+    },
+    role: {
+      type: String,
+      enum: ["admin", "user"],
+    },
+    address: {
+      type: String,
+      required: [true, "Address is required"],
+    },
   },
-  email: {
-    type: String,
-    required: [true, "email is required"],
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: [true, "password is required"],
-  },
-  phone: {
-    type: String,
-    required: [true, "Please enter a valid phone number"],
-  },
-  role: {
-    type: String,
-    enum: ["admin", "user"],
-  },
-  address: {
-    type: String,
-    required: [true, "Address is required"],
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
 userSchema.pre("save", async function (next) {
   const user = this;

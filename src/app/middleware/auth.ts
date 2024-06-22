@@ -10,7 +10,7 @@ import httpStatus from "http-status";
 const auth = (...requiredRoles: (keyof typeof USER_ROLE)[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization?.split(" ")[1];
-    console.log({ token });
+    // console.log({ token });
 
     if (!token) {
       throw new AppError(
