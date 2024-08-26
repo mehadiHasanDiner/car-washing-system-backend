@@ -34,7 +34,7 @@ const loginIntoDB = async (payload: TLoginUser) => {
   );
 
   if (!passwordMatch) {
-    throw new Error("Password not matched");
+    throw new Error("Password is incorrect");
   }
 
   const jwtPayload = {
