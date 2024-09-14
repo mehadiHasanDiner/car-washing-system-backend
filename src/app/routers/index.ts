@@ -7,6 +7,7 @@ import {
   BookingRoutes,
   BookingRoutes2,
 } from "../modules/booking/booking.route";
+import reviewRoutes from "../modules/review/review.route";
 const router = Router();
 
 const moduleRoutes = [
@@ -37,6 +38,10 @@ const moduleRoutes = [
   {
     path: "/my-bookings",
     route: BookingRoutes2,
+  },
+  {
+    path: "/review",
+    route: reviewRoutes,
   },
 ];
 
