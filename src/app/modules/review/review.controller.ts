@@ -4,11 +4,11 @@ import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
 import httpStatus from "http-status";
 
-export const createReview = catchAsync(async (req, res) => {
+export const postReview = catchAsync(async (req, res) => {
   const { body } = req;
   const auth = req.user as JwtPayload;
 
-  const result = await ReviewServices.createReviewIntoDB({
+  const result = await ReviewServices.postReviewIntoDB({
     ...body,
     user: auth._id,
   });

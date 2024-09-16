@@ -12,13 +12,13 @@ export const getReviewFromDB = async (limit?: number, page?: number) => {
 
   return { totalDoc, result };
 };
-export const createReviewIntoDB = async (payload: TReview) => {
+export const postReviewIntoDB = async (payload: TReview) => {
   const result = await ReviewModel.create(payload);
   return result;
 };
 
 const ReviewServices = {
-  createReviewIntoDB,
+  postReviewIntoDB,
   getReviewFromDB,
 };
 
