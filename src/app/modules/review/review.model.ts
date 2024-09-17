@@ -1,4 +1,5 @@
-import mongoose, { Schema, Document } from "mongoose";
+import { Schema, model } from "mongoose";
+import { TReview } from "./review.interface";
 
 const reviewSchema = new Schema(
   {
@@ -20,4 +21,4 @@ const reviewSchema = new Schema(
   },
   { timestamps: true }
 );
-export const ReviewModel = mongoose.model<Document>("Review", reviewSchema);
+export const ReviewModel = model<TReview>("Review", reviewSchema);
