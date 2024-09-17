@@ -1,10 +1,10 @@
-import { Schema, model } from "mongoose";
-import { TReview } from "./review.interface";
+import mongoose, { Schema, Document } from "mongoose";
 
 const reviewSchema = new Schema(
   {
     user: {
-      type: Schema.Types.ObjectId,
+      type: Schema.ObjectId,
+      required: true,
       ref: "User",
     },
     comment: {
@@ -14,8 +14,10 @@ const reviewSchema = new Schema(
     rating: {
       type: Number,
       required: true,
+      min: 1,
+      max: 5,
     },
   },
   { timestamps: true }
 );
-export const ReviewModel = model<TReview>("Review", reviewSchema);
+export const ReviewModel = mongoose.model<Document>("Review", reviewSchema);

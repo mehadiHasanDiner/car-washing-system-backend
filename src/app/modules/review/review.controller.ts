@@ -1,16 +1,13 @@
 import ReviewServices from "./review.service";
-import { JwtPayload } from "jsonwebtoken";
 import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
 import httpStatus from "http-status";
 
 export const postReview = catchAsync(async (req, res) => {
   const { body } = req;
-  const auth = req.user as JwtPayload;
 
   const result = await ReviewServices.postReviewIntoDB({
     ...body,
-    user: auth._id,
   });
   sendResponse(res, {
     statusCode: httpStatus.OK,

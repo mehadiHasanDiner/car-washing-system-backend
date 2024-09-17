@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-
 export type TReview = {
-  user: mongoose.Schema.Types.ObjectId;
+  user: string;
   comment: string;
   rating: number;
+  createdAt?: string;
+  updatedAt?: string;
 };
