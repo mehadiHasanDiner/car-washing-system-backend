@@ -6,6 +6,9 @@ const createServiceValidationSchema = z.object({
     description: z.string({ required_error: "Description is required" }),
     price: z.number({ required_error: "Price is required" }),
     duration: z.number({ required_error: "Duration Number is required" }),
+    image: z.string(),
+    rating: z.number().optional(),
+    featured: z.boolean().optional(),
     isDeleted: z.boolean().optional(),
   }),
 });

@@ -85,7 +85,7 @@ const getSingleServiceFromDB = async (id: string) => {
     []
   );
 
-  const service = await Service.findById(id);
+  const service = await ServiceModel.findById(id);
   return {
     service,
     slots: transformedSlots,
