@@ -1,17 +1,18 @@
 import { z } from "zod";
 import { USER_ROLE } from "./user.constants";
 
-const createAdminValidations = z.object({
+const createUserValidationSchema = z.object({
   body: z.object({
-    name: z.string(),
-    email: z.string().email(),
-    password: z.string().nonempty(),
-    phone: z.string().refine((val) => /^[0-9]{10,15}$/.test(val), {
-      message:
-        "Phone number must be 10 to 15 digits long and contain only numbers",
-    }),
-    role: z.nativeEnum(USER_ROLE),
-    address: z.string().nonempty(),
+    name: z.string({ required_error: "Name is required." }),
+    email: z
+      .string({
+        required_error: "Email is required.",
+        invalid_type_error: "Email must be a valid email address.",
+      })
+      .email(),
+    password: z.string({ required_error: "Password is required." }),
+    phone: z.string({ required_error: "Phone is required." }),
+    address: z.string({ required_error: "Address is required." }),
   }),
 });
 
@@ -22,7 +23,20 @@ const updateUserValidations = z.object({
   }),
 });
 
+const loginUserValidationSchema = z.object({
+  body: z.object({
+    email: z
+      .string({
+        required_error: "Email is required.",
+        invalid_type_error: "Email must be a valid email address.",
+      })
+      .email(),
+    password: z.string(),
+  }),
+});
+
 export const UserValidations = {
-  createAdminValidations,
+  createUserValidationSchema,
   updateUserValidations,
+  loginUserValidationSchema,
 };
